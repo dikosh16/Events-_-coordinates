@@ -1,0 +1,53 @@
+<!--
+Создайте ссылку и див с текстом внутри, который изначально при загрузке страницы будет скрыт.
+При клике на ссылку див появляется, если повторно нажать ссылку див и текст должны пропасть.
+Также создайте кнопку, которая будет отменять выполнение обработчика клика по ссылке.
+ -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,user-scalable=no">
+        <style>
+            #text {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <a href="#" id="link">Посилання</a><br><br>
+        <div id="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores pariatur a iure perferendis architecto tempore asperiores esse laboriosam aut alias.</div><br><br>
+        <button id="btn">Скасувати</button>
+        <script>
+            // Створюємо змінні
+            var toggleLink = document.getElementById('link');
+            var hiddenText = document.getElementById('text');
+            var cancelBtn = document.getElementById('btn');
+            var isVisible = false;
+
+            // Обробник для посилання
+            function toggleTextVisibility() {
+                // Перемикаємо видимість дива тексту
+                if (isVisible) {
+                    hiddenText.style.display = 'none';
+                } else {
+                    hiddenText.style.display = 'block';
+                }
+                isVisible = !isVisible;
+            }
+
+            // Додаємо обробник кліку на посилання
+            toggleLink.addEventListener('click', toggleTextVisibility);
+
+            // Обробник для кнопки скасування
+            function cancelToggle() {
+                // Встановлюємо флаг в значення "false", щоб обробник toggleTextVisibility не виконувався при наступному кліку
+                isVisible = false;
+                // Приховуємо див з текстом
+                hiddenText.style.display = 'none';
+            }
+
+            // Додаємо обробник кліку на кнопку скасування
+            cancelBtn.addEventListener('click', cancelToggle);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+<body>
+    <!-- 1. Создайте 5 блоков с текстом. Добавьте в каждый из блоков кнопку для его удаления.
+    Используйте только один обработчик. -->
+
+    <div id="blocks">
+        <div class="block">
+            <p>Блок 1</p>
+            <button class="btn">Видалити</button>
+        </div>
+        <div class="block">
+            <p>Блок 2</p>
+            <button class="btn">Видалити</button>
+        </div>
+        <div class="block">
+            <p>Блок 3</p>
+            <button class="btn">Видалити</button>
+        </div>
+        <div class="block">
+            <p>Блок 4</p>
+            <button class="btn">Видалити</button>
+        </div>
+        <div class="block">
+            <p>Блок 5</p>
+            <button class="btn">Видалити</button>
+        </div>
+    </div>
+    <script>
+        // Отримуємо контейнер із блоками
+        var blocksContainer = document.getElementById('blocks');
+
+        // Обробник для видалення блоку
+        function removeBlock(event) {
+            // Перевіряємо, чи була натиснута кнопка "Видалити"
+            if (event.target.classList.contains('btn')) {
+                // Знаходимо батьківський блок, який потрібно видалити
+                var blockToRemove = event.target.parentNode;
+                // Видаляємо блок із контейнера
+                blocksContainer.removeChild(blockToRemove);
+            }
+        }
+
+        // Додаємо обробник кліку на контейнер із блокам
+        blocksContainer.addEventListener('click', removeBlock);
+    </script>
+</body>
+</html>
